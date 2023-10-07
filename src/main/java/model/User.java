@@ -8,9 +8,9 @@ public abstract class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    protected Long id;
 
-    private String email;
+    protected String email;
 
-    private String password;
+    protected String password;
 }
