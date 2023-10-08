@@ -3,22 +3,18 @@ package model;
 import model.enumeration.ExpertStatus;
 
 import javax.persistence.Entity;
-import javax.persistence.PrePersist;
-import java.time.LocalDate;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-public class Expert extends User{
+public class Expert{
 
-    private String firstname;
-
-    private String lastname;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private ExpertStatus expertStatus;
 
-    private LocalDate registrationDate;
-
-    @PrePersist
-    private void onCreate(){
-        registrationDate = LocalDate.now();
-    }
+    private Long userId;
 }
