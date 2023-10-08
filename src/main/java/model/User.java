@@ -1,17 +1,35 @@
 package model;
 
-import javax.persistence.*;
+import lombok.Data;
+import model.enumeration.Role;
 
+import javax.persistence.*;
+import java.time.LocalDate;
+
+@Data
 @Entity
 @Table(name = "users")
-public abstract class User {
+public final class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
+    private Long id;
 
     @Column(unique = true)
-    protected String email;
+    private String email;
 
-    protected String password;
+    private String password;
+
+    private String firstname;
+
+    private String lastname;
+
+    private LocalDate registrationDate;
+
+    private Role role;
+
+    @PrePersist
+    private void onCreate(){
+        registrationDate = LocalDate.now();
+    }
 }
