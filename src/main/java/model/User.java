@@ -10,6 +10,7 @@ public abstract class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
+    @Column(unique = true)
     protected String email;
 
     protected String password;
