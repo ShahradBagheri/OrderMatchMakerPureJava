@@ -4,6 +4,7 @@ import lombok.Data;
 import model.enumeration.ExpertStatus;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -17,6 +18,11 @@ public class Expert{
 
     @Lob
     private byte[] imageData;
+
+    private Float score;
+
+    @ManyToMany
+    private List<SubService> subServices;
 
     private Long userId;
 }
