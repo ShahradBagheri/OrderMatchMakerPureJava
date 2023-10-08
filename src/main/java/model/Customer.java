@@ -1,20 +1,19 @@
 package model;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
-import javax.persistence.PrePersist;
-import java.time.LocalDate;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Data
 @Entity
-public class Customer extends User{
+public class Customer {
 
-    private String firstname;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String lastname;
-
-    private LocalDate registrationDate;
-
-    @PrePersist
-    private void onCreate(){
-        registrationDate = LocalDate.now();
-    }
+    private Long userId;
 }
