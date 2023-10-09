@@ -1,6 +1,7 @@
 package model;
 
 import lombok.Data;
+import model.enumeration.OrderState;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -29,4 +30,6 @@ public class Order {
     private LocalDate completionDate;
 
     private String address;
+
+    private OrderState orderState;
 }
