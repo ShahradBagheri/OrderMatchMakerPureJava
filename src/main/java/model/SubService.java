@@ -14,6 +14,10 @@ public class SubService {
 
     private String name;
 
+    private Double basePrice;
+
+    private String comment;
+
     @ManyToOne
     private SubService subServices;
 }
