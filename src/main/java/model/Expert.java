@@ -24,6 +24,9 @@ public class Expert{
     @ManyToMany
     private List<SubService> subServices;
 
+    @OneToMany
+    private List<Order> orders;
+
     @OneToOne
     private User user;
 }
