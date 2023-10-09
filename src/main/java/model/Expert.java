@@ -24,5 +24,6 @@ public class Expert{
     @ManyToMany
     private List<SubService> subServices;
 
-    private Long userId;
+    @OneToOne
+    private User user;
 }
