@@ -1,14 +1,19 @@
 package repository.impl;
 
 import model.Expert;
+import util.EntityManagerSingleton;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 public class ExpertRepositoryImpl implements repository.ExpertRepository {
 
+    private final EntityManager entityManager = EntityManagerSingleton.getInstanceEM();
+
     @Override
     public Expert create(Expert expert) {
-        return null;
+        entityManager.persist(expert);
+        return expert;
     }
 
     @Override
