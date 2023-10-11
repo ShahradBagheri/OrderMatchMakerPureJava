@@ -21,6 +21,9 @@ public class Expert{
 
     private Float score;
 
+    @OneToMany
+    private List<Rating> ratings;
+
     @ManyToMany
     private List<SubService> subServices;
 
