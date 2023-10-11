@@ -1,8 +1,7 @@
 package repository.impl;
 
-import model.Expert;
+
 import model.MainService;
-import repository.ExpertRepository;
 import repository.MainServiceRepository;
 import util.EntityManagerSingleton;
 
