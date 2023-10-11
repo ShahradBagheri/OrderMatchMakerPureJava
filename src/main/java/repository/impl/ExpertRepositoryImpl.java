@@ -18,17 +18,18 @@ public class ExpertRepositoryImpl implements repository.ExpertRepository {
 
     @Override
     public Expert update(Expert expert) {
-        return null;
+        entityManager.merge(expert);
+        return expert;
     }
 
     @Override
     public void delete(Expert expert) {
-
+        entityManager.remove(expert);
     }
 
     @Override
     public Expert findById(Long id) {
-        return null;
+        return entityManager.find(Expert.class,id);
     }
 
     @Override
