@@ -1,9 +1,11 @@
 package repository.impl;
 
+import model.Customer;
 import model.Expert;
 import util.EntityManagerSingleton;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class ExpertRepositoryImpl implements repository.ExpertRepository {
@@ -34,6 +36,8 @@ public class ExpertRepositoryImpl implements repository.ExpertRepository {
 
     @Override
     public List<Expert> findAll() {
-        return null;
+        String jpql = "SELECT e FROM Expert e";
+        TypedQuery<Expert> typedQuery = entityManager.createQuery(jpql, Expert.class);
+        return typedQuery.getResultList();
     }
 }
