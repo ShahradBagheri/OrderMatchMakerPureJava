@@ -7,6 +7,7 @@ import repository.MainServiceRepository;
 import util.EntityManagerSingleton;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class MainServiceImpl implements MainServiceRepository {
@@ -15,26 +16,30 @@ public class MainServiceImpl implements MainServiceRepository {
 
     @Override
     public MainService create(MainService mainService) {
-        return null;
+        entityManager.persist(mainService);
+        return mainService;
     }
 
     @Override
     public MainService update(MainService mainService) {
-        return null;
+        entityManager.merge(mainService);
+        return mainService;
     }
 
     @Override
     public void delete(MainService mainService) {
-
+        entityManager.remove(mainService);
     }
 
     @Override
     public MainService findById(Long id) {
-        return null;
+        return entityManager.find(MainService.class,id);
     }
 
     @Override
     public List<MainService> findAll() {
-        return null;
+        String jpql = "SELECT m FROM MainService m";
+        TypedQuery<MainService> typedQuery = entityManager.createQuery(jpql, MainService.class);
+        return typedQuery.getResultList();
     }
 }
