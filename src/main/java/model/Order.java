@@ -35,5 +35,6 @@ public class Order {
 
     private String address;
 
+    @Enumerated(EnumType.STRING)
     private OrderState orderState;
 }

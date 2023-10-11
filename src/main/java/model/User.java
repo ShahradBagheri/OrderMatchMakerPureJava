@@ -30,6 +30,7 @@ public class User {
     @JoinColumn(name = "wallet_id")
     private Wallet wallet;
 
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     @PrePersist

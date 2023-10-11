@@ -18,6 +18,7 @@ public class Expert{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     private ExpertStatus expertStatus;
 
     @Lob
