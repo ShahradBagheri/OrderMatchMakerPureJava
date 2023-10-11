@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Suggestion {
+public class Offer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
