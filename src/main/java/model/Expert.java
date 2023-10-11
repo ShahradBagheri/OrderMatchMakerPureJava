@@ -34,6 +34,7 @@ public class Expert{
     @OneToMany
     private List<Order> orders;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User user;
 }

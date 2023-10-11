@@ -26,7 +26,8 @@ public class User {
 
     private LocalDate registrationDate;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "wallet_id")
     private Wallet wallet;
 
     private Role role;
