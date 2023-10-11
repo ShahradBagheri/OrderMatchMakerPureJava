@@ -1,4 +1,4 @@
 package repository;
 
-public class OfferRepository {
+public interface OfferRepository {
 }

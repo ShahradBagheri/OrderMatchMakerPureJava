@@ -1,4 +1,4 @@
 package repository;
 
-public class SubServiceRepository {
+public interface SubServiceRepository {
 }
