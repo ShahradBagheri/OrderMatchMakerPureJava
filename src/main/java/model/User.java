@@ -26,6 +26,9 @@ public class User {
 
     private LocalDate registrationDate;
 
+    @OneToOne
+    private Wallet wallet;
+
     private Role role;
 
     @PrePersist
