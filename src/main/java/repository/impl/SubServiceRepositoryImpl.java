@@ -1,10 +1,12 @@
 package repository.impl;
 
+import model.Order;
 import model.SubService;
 import repository.SubServiceRepository;
 import util.EntityManagerSingleton;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class SubServiceRepositoryImpl implements SubServiceRepository {
@@ -13,26 +15,30 @@ public class SubServiceRepositoryImpl implements SubServiceRepository {
 
     @Override
     public SubService create(SubService subService) {
-        return null;
+        entityManager.persist(subService);
+        return subService;
     }
 
     @Override
     public SubService update(SubService subService) {
-        return null;
+        entityManager.merge(subService);
+        return subService;
     }
 
     @Override
     public void delete(SubService subService) {
-
+        entityManager.remove(subService);
     }
 
     @Override
     public SubService findById(SubService id) {
-        return null;
+        return entityManager.find(SubService.class,id);
     }
 
     @Override
     public List<SubService> findAll() {
-        return null;
+        String jpql = "SELECT s FROM SubService s";
+        TypedQuery<SubService> typedQuery = entityManager.createQuery(jpql, SubService.class);
+        return typedQuery.getResultList();
     }
 }
