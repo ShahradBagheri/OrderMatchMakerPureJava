@@ -16,4 +16,6 @@ public interface OrderService {
     Order findById(Long id);
 
     List<Order> findAll();
+
+    boolean validPrice(Order order);
 }

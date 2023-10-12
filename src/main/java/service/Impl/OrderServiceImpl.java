@@ -108,4 +108,9 @@ public class OrderServiceImpl implements OrderService {
             return null;
         }
     }
+
+    @Override
+    public boolean validPrice(Order order) {
+        return order.getSuggestedPrice() < order.getSubService().getBasePrice();
+    }
 }
