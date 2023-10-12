@@ -20,7 +20,7 @@ public class MainService {
     @Column(unique = true)
     private String name;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "mainService")
     private List<Expert> experts;
 
     @OneToMany(mappedBy = "mainService")
