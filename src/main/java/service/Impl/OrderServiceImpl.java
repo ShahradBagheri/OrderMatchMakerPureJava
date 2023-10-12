@@ -30,6 +30,18 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void delete(Order order) {
 
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            orderRepository.delete(order);
+
+            entityTransaction.commit();
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+        }
     }
 
     @Override
