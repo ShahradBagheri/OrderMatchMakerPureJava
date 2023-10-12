@@ -111,4 +111,22 @@ public class MainServiceServiceImpl implements MainServiceService {
             return null;
         }
     }
+
+    @Override
+    public void addExpert(MainService mainService, Expert expert) {
+
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        mainService.getExperts().add(expert);
+
+        try {
+            entityTransaction.begin();
+
+            mainServiceRepository.update(mainService);
+
+            entityTransaction.commit();
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+        }
+    }
 }
