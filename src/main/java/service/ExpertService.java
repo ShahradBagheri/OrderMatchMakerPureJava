@@ -1,6 +1,5 @@
 package service;
 
-import model.Customer;
 import model.Expert;
 import model.User;
 
