@@ -1,5 +1,6 @@
 package service.Impl;
 
+import model.Expert;
 import model.MainService;
 import repository.MainServiceRepository;
 import service.MainServiceService;
@@ -37,6 +38,7 @@ public class MainServiceServiceImpl implements MainServiceService {
 
     @Override
     public MainService update(MainService mainService) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
 
         try {
@@ -55,6 +57,7 @@ public class MainServiceServiceImpl implements MainServiceService {
 
     @Override
     public void delete(MainService mainService) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
 
         try {
@@ -71,7 +74,22 @@ public class MainServiceServiceImpl implements MainServiceService {
 
     @Override
     public MainService findById(Long id) {
-        return null;
+
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            MainService mainService = mainServiceRepository.findById(id);
+
+            entityTransaction.commit();
+            return mainService;
+
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+            return null;
+        }
     }
 
     @Override
