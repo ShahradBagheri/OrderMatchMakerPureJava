@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import model.enumeration.ExpertStatus;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -40,4 +41,9 @@ public class Expert{
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @PrePersist
+    private void onCreate(){
+        score = 0F;
+    }
 }
