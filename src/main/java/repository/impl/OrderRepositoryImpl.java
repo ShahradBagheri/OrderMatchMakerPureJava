@@ -37,7 +37,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public List<Order> findAll() {
-        String jpql = "SELECT o FROM Order o";
+        String jpql = "SELECT o FROM orders o";
         TypedQuery<Order> typedQuery = entityManager.createQuery(jpql, Order.class);
         return typedQuery.getResultList();
     }
