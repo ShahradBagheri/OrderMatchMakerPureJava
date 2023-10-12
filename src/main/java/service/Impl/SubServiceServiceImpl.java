@@ -91,6 +91,20 @@ public class SubServiceServiceImpl implements SubServiceService {
 
     @Override
     public List<SubService> findAll() {
-        return null;
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            List<SubService> subServices = subServiceRepository.findAll();
+
+            entityTransaction.commit();
+            return subServices;
+
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+            return null;
+        }
     }
 }
