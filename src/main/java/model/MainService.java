@@ -19,6 +19,6 @@ public class MainService {
 
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "main_service")
     private List<SubService> subServices;
 }

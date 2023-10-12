@@ -23,5 +23,6 @@ public class SubService {
     private String comment;
 
     @ManyToOne
-    private SubService subServices;
+    @JoinColumn(name = "main_service_id")
+    private MainService mainService;
 }
