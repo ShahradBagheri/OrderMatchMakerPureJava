@@ -18,6 +18,7 @@ public class Offer {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "expert_id")
     private Expert expert;
 
     private LocalDate creationDate;

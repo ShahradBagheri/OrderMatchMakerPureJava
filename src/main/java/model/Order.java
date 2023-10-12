@@ -23,9 +23,11 @@ public class Order {
     private SubService subService;
 
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @ManyToOne
+    @JoinColumn(name = "expert_id")
     private Expert expert;
 
     private Double suggestedPrice;
