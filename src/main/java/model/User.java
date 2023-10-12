@@ -8,6 +8,7 @@ import model.enumeration.Role;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -30,7 +31,7 @@ public class User {
 
     private String lastname;
 
-    private LocalDate registrationDate;
+    private LocalDateTime registrationDate;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "wallet_id")
@@ -41,6 +42,6 @@ public class User {
 
     @PrePersist
     private void onCreate(){
-        registrationDate = LocalDate.now();
+        registrationDate = LocalDateTime.now();
     }
 }
