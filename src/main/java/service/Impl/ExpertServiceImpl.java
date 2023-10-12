@@ -1,5 +1,6 @@
 package service.Impl;
 
+import model.Customer;
 import model.Expert;
 import repository.ExpertRepository;
 import service.ExpertService;
@@ -73,7 +74,22 @@ public class ExpertServiceImpl implements ExpertService {
 
     @Override
     public Expert findById(Long id) {
-        return null;
+
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            Expert expert = expertRepository.findById(id);
+
+            entityTransaction.commit();
+            return expert;
+
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+            return null;
+        }
     }
 
     @Override
