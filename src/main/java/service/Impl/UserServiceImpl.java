@@ -23,8 +23,8 @@ public class UserServiceImpl implements UserService {
             entityTransaction.begin();
 
             User user = userRepository.findByUsername(username);
+            entityTransaction.commit();
             if (Objects.equals(user.getPassword(), password)) {
-                entityTransaction.commit();
                 return user;
             }
         } catch (PersistenceException | IllegalStateException e) {
