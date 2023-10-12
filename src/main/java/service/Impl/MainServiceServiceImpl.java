@@ -37,7 +37,20 @@ public class MainServiceServiceImpl implements MainServiceService {
 
     @Override
     public MainService update(MainService mainService) {
-        return null;
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            mainServiceRepository.update(mainService);
+
+            entityTransaction.commit();
+            return mainService;
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+            return null;
+        }
     }
 
     @Override
