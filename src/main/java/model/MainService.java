@@ -20,6 +20,9 @@ public class MainService {
     @Column(unique = true)
     private String name;
 
+    @ManyToMany
+    private List<Expert> experts;
+
     @OneToMany(mappedBy = "mainService")
     private List<SubService> subServices;
 }
