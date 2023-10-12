@@ -4,7 +4,7 @@ import model.User;
 
 public interface UserService {
 
-    User signIn(String username, String password);
+    User signIn(String email, String password);
 
     boolean isValidEmail(String email);
 

@@ -19,12 +19,12 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository = ApplicationContext.userRepository;
 
     @Override
-    public User signIn(String username, String password) {
+    public User signIn(String email, String password) {
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
             entityTransaction.begin();
 
-            User user = userRepository.findByUsername(username);
+            User user = userRepository.findByEmail(email);
             entityTransaction.commit();
             if (Objects.equals(user.getPassword(), password)) {
                 return user;

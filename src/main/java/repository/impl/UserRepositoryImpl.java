@@ -12,10 +12,10 @@ public class UserRepositoryImpl implements UserRepository {
     private final EntityManager entityManager = EntityManagerSingleton.getInstanceEM();
 
     @Override
-    public User findByUsername(String username) {
-        String hql = "SELECT u FROM users u WHERE u.username = :username";
+    public User findByEmail(String email) {
+        String hql = "SELECT u FROM users u WHERE u.email = :email";
         TypedQuery<User> typedQuery = entityManager.createQuery(hql, User.class);
-        typedQuery.setParameter("username",username);
+        typedQuery.setParameter("email",email);
         return typedQuery.getSingleResult();
     }
 }
