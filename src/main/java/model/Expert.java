@@ -29,9 +29,6 @@ public class Expert{
     @OneToMany(mappedBy = "expert")
     private List<Rating> ratings;
 
-    @ManyToMany
-    private List<SubService> subServices;
-
     @OneToMany(mappedBy = "expert")
     private List<Offer> offers;
 
