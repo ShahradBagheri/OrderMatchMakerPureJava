@@ -1,18 +1,18 @@
 package service;
 
-import model.MainService;
+import model.SubService;
 
 import java.util.List;
 
 public interface SubServiceService {
 
-    MainService create(MainService mainService);
+    SubService create(SubService subService);
 
-    MainService update(MainService mainService);
+    SubService update(SubService subService);
 
-    void delete(MainService mainService);
+    void delete(SubService subService);
 
-    MainService findById(Long id);
+    SubService findById(Long id);
 
-    List<MainService> findAll();
+    List<SubService> findAll();
 }
