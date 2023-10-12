@@ -18,7 +18,7 @@ public interface ExpertService {
 
     List<Expert> findAll();
 
-    Customer findByUser(User user);
+    Expert findByUser(User user);
 
     Expert changePassword(Expert expert,String password);
 }

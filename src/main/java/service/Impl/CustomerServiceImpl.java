@@ -111,6 +111,26 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Customer findByUser(User user) {
+
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            Customer customer = customerRepository.findByEmail(user.getEmail());
+
+            entityTransaction.commit();
+            return customer;
+
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+            return null;
+        }
+    }
+
+    @Override
     public Customer changePassword(Customer customer, String password) {
 
         EntityTransaction entityTransaction = entityManager.getTransaction();

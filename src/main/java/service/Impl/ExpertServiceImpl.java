@@ -2,6 +2,7 @@ package service.Impl;
 
 import model.Customer;
 import model.Expert;
+import model.User;
 import repository.ExpertRepository;
 import service.ExpertService;
 import util.ApplicationContext;
@@ -104,6 +105,25 @@ public class ExpertServiceImpl implements ExpertService {
 
             entityTransaction.commit();
             return experts;
+
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+            return null;
+        }
+    }
+
+    @Override
+    public Expert findByUser(User user) {
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            Expert expert = expertRepository.findByEmail(user.getEmail());
+
+            entityTransaction.commit();
+            return expert;
 
         } catch (PersistenceException | IllegalStateException e) {
 
