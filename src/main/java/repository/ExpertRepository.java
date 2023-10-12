@@ -1,6 +1,8 @@
 package repository;
 
+import model.Customer;
 import model.Expert;
+import model.User;
 
 import java.util.List;
 
@@ -15,4 +17,6 @@ public interface ExpertRepository {
     Expert findById(Long id);
 
     List<Expert> findAll();
+
+    Customer findByUser(User user);
 }

@@ -1,6 +1,8 @@
 package service;
 
+import model.Customer;
 import model.Expert;
+import model.User;
 
 import java.util.List;
 
@@ -15,6 +17,8 @@ public interface ExpertService {
     Expert findById(Long id);
 
     List<Expert> findAll();
+
+    Customer findByUser(User user);
 
     Expert changePassword(Expert expert,String password);
 }

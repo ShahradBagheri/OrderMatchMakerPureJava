@@ -1,6 +1,7 @@
 package repository;
 
 import model.Customer;
+import model.User;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface CustomerRepository {
     Customer findById(Long id);
 
     List<Customer> findAll();
+
+    Customer findByUser(User user);
 }
