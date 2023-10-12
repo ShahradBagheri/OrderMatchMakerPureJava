@@ -37,7 +37,21 @@ public class ExpertServiceImpl implements ExpertService {
 
     @Override
     public Expert update(Expert expert) {
-        return null;
+
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            expertRepository.update(expert);
+
+            entityTransaction.commit();
+            return expert;
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+            return null;
+        }
     }
 
     @Override
