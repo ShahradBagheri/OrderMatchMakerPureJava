@@ -34,4 +34,11 @@ public class ImageProcessing {
             e.printStackTrace();
         }
     }
+
+    public static boolean validImageSize(String filepath){
+        long sizeLimit = 300 * 1024;
+        File file = new File(filepath);
+
+        return  file.length() > sizeLimit;
+    }
 }
