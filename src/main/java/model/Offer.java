@@ -17,6 +17,9 @@ public class Offer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    private Expert expert;
+
     private LocalDate creationDate;
 
     private LocalDate startingDate;

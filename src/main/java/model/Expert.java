@@ -33,7 +33,7 @@ public class Expert{
     private List<SubService> subServices;
 
     @OneToMany
-    private List<Order> orders;
+    private List<Offer> offers;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
