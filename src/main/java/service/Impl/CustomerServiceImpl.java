@@ -92,6 +92,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> findAll() {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
 
         try {

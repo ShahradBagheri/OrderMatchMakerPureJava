@@ -94,7 +94,22 @@ public class ExpertServiceImpl implements ExpertService {
 
     @Override
     public List<Expert> findAll() {
-        return null;
+
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            List<Expert> experts = expertRepository.findAll();
+
+            entityTransaction.commit();
+            return experts;
+
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+            return null;
+        }
     }
 
     @Override
