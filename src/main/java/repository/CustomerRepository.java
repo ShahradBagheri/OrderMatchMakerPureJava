@@ -17,5 +17,5 @@ public interface CustomerRepository {
 
     List<Customer> findAll();
 
-    Customer findByEmail(String username);
+    Customer findByEmail(String email);
 }

@@ -43,7 +43,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public Customer findByEmail(String username) {
-        return null;
+    public Customer findByEmail(String email) {
+        String hql = "SELECT c FROM Customer c WHERE c.user.email = :email";
+        TypedQuery<Customer> typedQuery = entityManager.createQuery(hql, Customer.class);
+        typedQuery.setParameter("email",email);
+        return typedQuery.getSingleResult();
     }
 }

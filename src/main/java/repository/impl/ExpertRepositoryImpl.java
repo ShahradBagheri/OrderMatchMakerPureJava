@@ -42,10 +42,10 @@ public class ExpertRepositoryImpl implements repository.ExpertRepository {
     }
 
     @Override
-    public Customer findByEmail(String username) {
-        String hql = "SELECT c FROM Customer c WHERE c.user.email = :username";
-        TypedQuery<Customer> typedQuery = entityManager.createQuery(hql, Customer.class);
-        typedQuery.setParameter("username",username);
+    public Expert findByEmail(String email) {
+        String hql = "SELECT e FROM Expert e WHERE e.user.email = :email";
+        TypedQuery<Expert> typedQuery = entityManager.createQuery(hql, Expert.class);
+        typedQuery.setParameter("email",email);
         return typedQuery.getSingleResult();
     }
 }
