@@ -31,7 +31,7 @@ public class SubServiceRepositoryImpl implements SubServiceRepository {
     }
 
     @Override
-    public SubService findById(SubService id) {
+    public SubService findById(Long id) {
         return entityManager.find(SubService.class,id);
     }
 

@@ -12,7 +12,7 @@ public interface SubServiceRepository {
 
     void delete(SubService subService);
 
-    SubService findById(SubService id);
+    SubService findById(Long id);
 
     List<SubService> findAll();
 }
