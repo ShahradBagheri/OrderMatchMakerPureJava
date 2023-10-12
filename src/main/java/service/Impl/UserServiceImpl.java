@@ -43,4 +43,13 @@ public class UserServiceImpl implements UserService {
 
         return matcher.matches();
     }
+
+    @Override
+    public boolean isValidPassword(String password) {
+        String regex = "^(?=.*[a-zA-Z])(?=.*\\d).{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+
+        return matcher.matches();
+    }
 }
