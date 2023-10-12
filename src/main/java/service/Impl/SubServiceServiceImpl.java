@@ -37,13 +37,18 @@ public class SubServiceServiceImpl implements SubServiceService {
 
     @Override
     public SubService update(SubService subService) {
+        EntityTransaction entityTransaction = entityManager.getTransaction();
 
         try {
+            entityTransaction.begin();
+
             subServiceRepository.update(subService);
+
+            entityTransaction.commit();
             return subService;
         } catch (PersistenceException | IllegalStateException e) {
 
-            System.err.println(e.getMessage());
+            entityTransaction.rollback();
             return null;
         }
     }

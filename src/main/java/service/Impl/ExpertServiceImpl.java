@@ -21,12 +21,18 @@ public class ExpertServiceImpl implements ExpertService {
     @Override
     public Expert create(Expert expert) {
 
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
         try {
+            entityTransaction.begin();
+
             expertRepository.create(expert);
 
+            entityTransaction.commit();
             return expert;
         } catch (PersistenceException | IllegalStateException e) {
-            System.err.println(e.getMessage());
+
+            entityTransaction.rollback();
             return null;
         }
     }

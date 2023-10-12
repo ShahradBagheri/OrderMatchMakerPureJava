@@ -7,8 +7,7 @@ import util.ApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        CustomerService customerService = new CustomerServiceImpl();
-
+        //create customer
         User user = User.builder()
                 .firstname("Shahrad")
                 .lastname("Bagheri")
@@ -19,10 +18,12 @@ public class Main {
 
         Customer customer = new Customer();
         customer.setUser(user);
+        customer = ApplicationContext.customerService.create(customer);
 
-//        customer = customerService.create(customer);
-
-        User user1 = ApplicationContext.userService.signIn("shahrad@gmail.com","something");
-        System.out.println(user1);
+        //update customer
+//
+//        Customer customer = ApplicationContext.customerService.findById(1L);
+//        customer.setUser(user);
+//        ApplicationContext.customerService.update(customer);
     }
 }
