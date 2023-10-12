@@ -94,6 +94,21 @@ public class MainServiceServiceImpl implements MainServiceService {
 
     @Override
     public List<MainService> findAll() {
-        return null;
+
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            List<MainService> mainServices = mainServiceRepository.findAll();
+
+            entityTransaction.commit();
+            return mainServices;
+
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+            return null;
+        }
     }
 }
