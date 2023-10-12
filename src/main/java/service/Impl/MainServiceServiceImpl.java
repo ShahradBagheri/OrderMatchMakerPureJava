@@ -55,7 +55,18 @@ public class MainServiceServiceImpl implements MainServiceService {
 
     @Override
     public void delete(MainService mainService) {
+        EntityTransaction entityTransaction = entityManager.getTransaction();
 
+        try {
+            entityTransaction.begin();
+
+            mainServiceRepository.delete(mainService);
+
+            entityTransaction.commit();
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+        }
     }
 
     @Override
