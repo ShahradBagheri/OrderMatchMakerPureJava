@@ -27,7 +27,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public void delete(Customer customer) {
-        entityManager.detach(customer);
+        entityManager.remove(customer);
     }
 
     @Override
