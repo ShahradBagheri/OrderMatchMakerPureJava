@@ -1,6 +1,5 @@
 package service.Impl;
 
-import model.Customer;
 import model.Expert;
 import model.User;
 import repository.ExpertRepository;

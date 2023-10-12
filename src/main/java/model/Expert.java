@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import model.enumeration.ExpertStatus;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Data

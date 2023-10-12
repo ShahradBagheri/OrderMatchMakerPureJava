@@ -1,7 +1,6 @@
 package repository.impl;
 
 import model.Customer;
-import model.User;
 import repository.CustomerRepository;
 import util.EntityManagerSingleton;
 

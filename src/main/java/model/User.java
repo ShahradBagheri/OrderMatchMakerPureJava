@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import model.enumeration.Role;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data

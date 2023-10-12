@@ -1,6 +1,5 @@
 package repository.impl;
 
-import model.Order;
 import model.SubService;
 import repository.SubServiceRepository;
 import util.EntityManagerSingleton;
