@@ -40,4 +40,12 @@ public class ExpertRepositoryImpl implements repository.ExpertRepository {
         TypedQuery<Expert> typedQuery = entityManager.createQuery(jpql, Expert.class);
         return typedQuery.getResultList();
     }
+
+    @Override
+    public Customer findByEmail(String username) {
+        String hql = "SELECT c FROM Customer c WHERE c.user.email = :username";
+        TypedQuery<Customer> typedQuery = entityManager.createQuery(hql, Customer.class);
+        typedQuery.setParameter("username",username);
+        return typedQuery.getSingleResult();
+    }
 }

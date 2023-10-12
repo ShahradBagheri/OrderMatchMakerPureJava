@@ -41,4 +41,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         TypedQuery<Customer> typedQuery = entityManager.createQuery(jpql, Customer.class);
         return typedQuery.getResultList();
     }
+
+    @Override
+    public Customer findByEmail(String username) {
+        return null;
+    }
 }

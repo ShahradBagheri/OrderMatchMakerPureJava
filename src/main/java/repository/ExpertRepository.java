@@ -18,5 +18,5 @@ public interface ExpertRepository {
 
     List<Expert> findAll();
 
-    Customer findByUsername(String username);
+    Customer findByEmail(String username);
 }
