@@ -57,6 +57,18 @@ public class ExpertServiceImpl implements ExpertService {
     @Override
     public void delete(Expert expert) {
 
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            expertRepository.delete(expert);
+
+            entityTransaction.commit();
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+        }
     }
 
     @Override
