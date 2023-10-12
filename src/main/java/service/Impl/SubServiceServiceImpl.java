@@ -1,5 +1,6 @@
 package service.Impl;
 
+import model.MainService;
 import model.SubService;
 import repository.SubServiceRepository;
 import service.SubServiceService;
@@ -70,7 +71,22 @@ public class SubServiceServiceImpl implements SubServiceService {
 
     @Override
     public SubService findById(Long id) {
-        return null;
+
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            SubService subService = subServiceRepository.findById(id);
+
+            entityTransaction.commit();
+            return subService;
+
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+            return null;
+        }
     }
 
     @Override
