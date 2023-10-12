@@ -114,6 +114,21 @@ public class ExpertServiceImpl implements ExpertService {
 
     @Override
     public Expert changePassword(Expert expert, String password) {
-        return null;
+
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        expert.getUser().setPassword(password);
+
+        try {
+            entityTransaction.begin();
+
+            expertRepository.update(expert);
+
+            entityTransaction.commit();
+            return expert;
+        } catch (PersistenceException | IllegalStateException e) {
+            entityTransaction.rollback();
+            return null;
+        }
     }
 }
