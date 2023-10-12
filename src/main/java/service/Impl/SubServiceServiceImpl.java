@@ -54,7 +54,18 @@ public class SubServiceServiceImpl implements SubServiceService {
 
     @Override
     public void delete(SubService subService) {
+        EntityTransaction entityTransaction = entityManager.getTransaction();
 
+        try {
+            entityTransaction.begin();
+
+            subServiceRepository.delete(subService);
+
+            entityTransaction.commit();
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+        }
     }
 
     @Override
