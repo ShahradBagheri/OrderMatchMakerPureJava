@@ -26,13 +26,13 @@ public class Expert{
 
     private Float score;
 
-    @OneToMany
+    @OneToMany(mappedBy = "expert")
     private List<Rating> ratings;
 
     @ManyToMany
     private List<SubService> subServices;
 
-    @OneToMany
+    @OneToMany(mappedBy = "expert")
     private List<Offer> offers;
 
     @OneToOne(cascade = CascadeType.ALL)

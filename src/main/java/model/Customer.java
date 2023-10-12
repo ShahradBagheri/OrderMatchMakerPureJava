@@ -21,6 +21,6 @@ public class Customer {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
+    @OneToMany(mappedBy = "customer")
     private List<Order> orders;
 }
