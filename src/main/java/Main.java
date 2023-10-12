@@ -3,6 +3,7 @@ import model.User;
 import model.enumeration.Role;
 import service.CustomerService;
 import service.Impl.CustomerServiceImpl;
+import util.ApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,8 +17,12 @@ public class Main {
                 .role(Role.CUSTOMER)
                 .build();
 
-        Customer customer = customerService.findById(2L);
+        Customer customer = new Customer();
+        customer.setUser(user);
 
-        customerService.changePassword(customer,"changed");
+//        customer = customerService.create(customer);
+
+        User user1 = ApplicationContext.userService.signIn("shahrad@gmail.com","something");
+        System.out.println(user1);
     }
 }

@@ -18,18 +18,13 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer create(Customer customer) {
 
-        EntityTransaction entityTransaction = entityManager.getTransaction();
-
         try {
-            entityTransaction.begin();
-
             customerRepository.create(customer);
 
-            entityTransaction.commit();
             return customer;
         } catch (PersistenceException | IllegalStateException e) {
 
-            entityTransaction.rollback();
+            System.err.println(e.getMessage());
             return null;
         }
     }

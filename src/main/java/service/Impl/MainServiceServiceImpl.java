@@ -20,18 +20,13 @@ public class MainServiceServiceImpl implements MainServiceService {
     @Override
     public MainService create(MainService mainService) {
 
-        EntityTransaction entityTransaction = entityManager.getTransaction();
-
         try {
-            entityTransaction.begin();
 
             mainServiceRepository.create(mainService);
 
-            entityTransaction.commit();
             return mainService;
         } catch (PersistenceException | IllegalStateException e) {
-
-            entityTransaction.rollback();
+            System.err.println(e.getMessage());
             return null;
         }
     }

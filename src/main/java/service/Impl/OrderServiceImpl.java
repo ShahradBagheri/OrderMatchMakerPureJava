@@ -19,18 +19,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order create(Order order) {
-        EntityTransaction entityTransaction = entityManager.getTransaction();
 
         try {
-            entityTransaction.begin();
-
             orderRepository.create(order);
-
-            entityTransaction.commit();
             return order;
         } catch (PersistenceException | IllegalStateException e) {
-
-            entityTransaction.rollback();
+            System.err.println(e.getMessage());
             return null;
         }
     }

@@ -20,17 +20,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User signIn(String email, String password) {
-        EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
-            entityTransaction.begin();
-
             User user = userRepository.findByEmail(email);
-            entityTransaction.commit();
             if (Objects.equals(user.getPassword(), password)) {
                 return user;
             }
         } catch (PersistenceException | IllegalStateException e) {
-            entityTransaction.rollback();
+            System.err.println(e.getMessage());
         }
         return null;
     }

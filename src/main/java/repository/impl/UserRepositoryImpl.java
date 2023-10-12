@@ -13,7 +13,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findByEmail(String email) {
-        String hql = "SELECT u FROM users u WHERE u.email = :email";
+        String hql = "SELECT u FROM User u WHERE u.email = :email";
         TypedQuery<User> typedQuery = entityManager.createQuery(hql, User.class);
         typedQuery.setParameter("email",email);
         return typedQuery.getSingleResult();
