@@ -34,7 +34,21 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order findById(Long id) {
-        return null;
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        try {
+            entityTransaction.begin();
+
+            Order order = orderRepository.findById(id);
+
+            entityTransaction.commit();
+            return order;
+
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
+            return null;
+        }
     }
 
     @Override
