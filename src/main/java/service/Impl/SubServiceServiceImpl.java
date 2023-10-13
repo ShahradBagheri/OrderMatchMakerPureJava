@@ -1,5 +1,7 @@
 package service.Impl;
 
+import model.Expert;
+import model.MainService;
 import model.SubService;
 import repository.SubServiceRepository;
 import service.SubServiceService;
@@ -104,6 +106,24 @@ public class SubServiceServiceImpl implements SubServiceService {
 
             entityTransaction.rollback();
             return null;
+        }
+    }
+
+    @Override
+    public void addExpert(SubService subService, Expert expert) {
+
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        subService.getExperts().add(expert);
+
+        try {
+            entityTransaction.begin();
+
+            subServiceRepository.update(subService);
+
+            entityTransaction.commit();
+        } catch (PersistenceException | IllegalStateException e) {
+
+            entityTransaction.rollback();
         }
     }
 }

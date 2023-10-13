@@ -1,5 +1,6 @@
 package service;
 
+import model.Expert;
 import model.SubService;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface SubServiceService {
     SubService findById(Long id);
 
     List<SubService> findAll();
+
+    void addExpert(SubService subService, Expert expert);
 }
