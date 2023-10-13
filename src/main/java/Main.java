@@ -132,6 +132,10 @@ public class Main {
         //subService delete
 //        ApplicationContext.subServiceService.delete(ApplicationContext.subServiceService.findById(1L));
 
+
+        //add expert to subService
+//        ApplicationContext.subServiceService.addExpert(ApplicationContext.subServiceService.findById(1L),ApplicationContext.expertService.findById(2L));
+
         //order create
 
 //        Order order = Order.builder()
