@@ -23,8 +23,5 @@ public class MainService {
     private String name;
 
     @OneToMany(mappedBy = "mainService")
-    private List<Expert> experts;
-
-    @OneToMany(mappedBy = "mainService")
     private List<SubService> subServices;
 }

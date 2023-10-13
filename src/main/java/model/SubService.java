@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -24,6 +25,9 @@ public class SubService {
     private Double basePrice;
 
     private String comment;
+
+    @OneToMany(mappedBy = "mainService")
+    private List<Expert> experts;
 
     @ManyToOne
     @JoinColumn(name = "main_service_id")

@@ -35,7 +35,7 @@ public class Expert{
     private List<Offer> offers;
 
     @ManyToOne
-    private MainService mainService;
+    private SubService subService;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
