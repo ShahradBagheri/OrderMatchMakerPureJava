@@ -16,6 +16,4 @@ public interface MainServiceService {
     MainService findById(Long id);
 
     List<MainService> findAll();
-
-    void addExpert(MainService mainService, Expert expert);
 }
