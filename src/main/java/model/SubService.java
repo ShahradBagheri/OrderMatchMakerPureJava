@@ -26,7 +26,7 @@ public class SubService {
 
     private String comment;
 
-    @OneToMany(mappedBy = "mainService")
+    @OneToMany(mappedBy = "subService")
     private List<Expert> experts;
 
     @ManyToOne
